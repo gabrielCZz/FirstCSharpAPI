@@ -35,7 +35,7 @@ namespace ProductCatalog.Controllers
         [HttpGet]
         public IEnumerable<Product> GetProducts(int id)
         {
-            return _context.Products.AsNoTracking().Where(x => x.Category.Id == id).ToList();
+            return _context.Products.AsNoTracking().Where(x => x.CategoryId == id).ToList();
         }
 
         [Route("v1/categories")]
@@ -52,7 +52,7 @@ namespace ProductCatalog.Controllers
         [HttpPut]
         public Category Put([FromBody] Category category)
         {
-            _context.Entry<Category>(category).State = EntityState.Modified;
+            _context.Entry<Category>(category).State = EntityState.Modified; //identifica quais propiedades foram alteradas
             _context.SaveChanges();
 
             return category;

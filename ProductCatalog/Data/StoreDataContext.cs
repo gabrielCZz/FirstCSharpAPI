@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProductCatalog.Map;
 using ProductCatalog.Models;
 
-namespace ProductCatalog.Data
+namespace ProductCatalog.Data 
 {
     public class StoreDataContext : DbContext
     {        
@@ -15,7 +12,7 @@ namespace ProductCatalog.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=devAPI;Data Source=DESKTOP-AU7631G");
+            optionsBuilder.UseSqlServer(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=devAPI;Data Source=DESKTOP-AU7631G");                    
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
