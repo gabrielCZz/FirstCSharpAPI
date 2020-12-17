@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProductCatalog.Repositories;
 
 namespace ProductCatalog
 {
@@ -28,6 +29,8 @@ namespace ProductCatalog
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddScoped<StoreDataContext, StoreDataContext>();
+            services.AddTransient<ProductRepository, ProductRepository>();
+            services.AddTransient<CategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -12,7 +12,7 @@ namespace ProductCatalog.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=devAPI;Data Source=DESKTOP-AU7631G");                    
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-AU7631G;Database=devAPI;User ID=dev;Password=Dev2512");                    
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,14 +22,3 @@ namespace ProductCatalog.Data
         }
     }
 }
-//solução no SalesWebMVC
-/*public ProductCatalogContext(DbContextOptions<ProductCatalogContext> options)
-    : base(options)
-{
-}*/
-
-//JASON:
-/*,
-  "ConnectionStrings": {
-    "ProductCatalogContext": "Server=(localdb)\\mssqllocaldb;Database=ProductCatalogContext-4c271277-ad64-4d29-a82b-620cf435c1db;Trusted_Connection=True;MultipleActiveResultSets=true"
-  }*/
