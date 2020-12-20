@@ -20,6 +20,9 @@ namespace ProductCatalog.Controllers
 
         [Route("v1/categories")]
         [HttpGet]
+        [ResponseCache(Duration = 3600)]        
+        // Dentro do header da requisição "ResponseCache" executar => Cache-Control: public,max-age=60 
+        // cache no lado do cliente => [ResponseCache(Location = ResponseCacheLocation.Client,Duration = 60)]  
         public IEnumerable<Category> Get()
         {
             return _repository.Get();
@@ -34,6 +37,7 @@ namespace ProductCatalog.Controllers
 
         [Route("v1/categories/{id}/products")]
         [HttpGet]
+        [ResponseCache(Duration = 30)]
         public IEnumerable<Product> GetProducts(int id)
         {
             return _repository.GetProducts(id);

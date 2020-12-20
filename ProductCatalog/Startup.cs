@@ -28,6 +28,7 @@ namespace ProductCatalog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddResponseCompression();
             services.AddScoped<StoreDataContext, StoreDataContext>();
             services.AddTransient<ProductRepository, ProductRepository>();
             services.AddTransient<CategoryRepository, CategoryRepository>();

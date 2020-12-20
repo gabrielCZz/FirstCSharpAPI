@@ -21,12 +21,12 @@ namespace ProductCatalog.Controllers
         }
 
         [Route("v1/products")]
-        [HttpGet]
+        [HttpGet]              
         public IEnumerable<ListProductViewModel> Get()
         {
             return _repository.Get();
         }
-
+        
         [Route("v1/products/{id}")]
         [HttpGet]
         public Product Get(int id)
@@ -34,7 +34,7 @@ namespace ProductCatalog.Controllers
             return _repository.Get(id);
         }
 
-        [Route("v1/Products")]
+        [Route("v1/products")]
         [HttpPost]
         public ResultViewModel Post([FromBody]EditorProductViewModel model)
         {
@@ -46,7 +46,7 @@ namespace ProductCatalog.Controllers
                     Message = "Não foi possível cadastrar o produto :(",
                     Data = model.Notifications
                 };
-
+            
             var product = new Product();
             product.Title = model.Title;
             product.CategoryId = model.CategoryId;
@@ -57,6 +57,20 @@ namespace ProductCatalog.Controllers
             product.Price = model.Price;
             product.Quantity = model.Quantity;
 
+            _repository.Save(product);
+
+            return new ResultViewModel
+            {
+                Success = true,
+                Message = "O Produto foi cadastrado com sucesso! :)",
+                Data = product
+            };
+        }
+
+        [Route("v2/products")]
+        [HttpPost]
+        public ResultViewModel Post([FromBody]Product product)
+        {            
             _repository.Save(product);
 
             return new ResultViewModel
